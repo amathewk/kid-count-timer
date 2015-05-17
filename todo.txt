@@ -1,0 +1,7 @@
+1. cancel/pause
+2. validation
+  a. required
+  b. format
+  c. restrict unreasonable ranges
+3. actual time display after count/pause action
+4. running time display

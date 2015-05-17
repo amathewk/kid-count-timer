@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<item type="id" name="count_button" />
+	<item type="id" name="stop_button" />
 	<item type="id" name="count_box" />
 	<item type="id" name="time_box" />
 	<string name="start">Start</string>
+	<string name="stop">Stop</string>
 	<string name="app_name">Kid Count Timer</string>
 </resources>
