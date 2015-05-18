@@ -1,6 +1,6 @@
 package kidcounter.counter
 
-import akka.actor.{ActorLogging, Actor}
+import akka.actor.{Props, ActorLogging, Actor}
 import scala.concurrent.duration._
 //import system.dispatcher
 
@@ -18,10 +18,10 @@ object CounterActor {
   case object Stop
   case class NextCount(val count:Int, val maxCount:Int)
 
-
+  def props(count:Int, maxCount:Int) : Props = Props(new CounterActor(count, maxCount))
 }
 
-class CounterActor(var count: Int, var time:Int) extends Actor with ActorLogging {
+class CounterActor(count: Int, time:Int) extends Actor with ActorLogging {
 
   import CounterActor._
   import context.{system, become}
@@ -64,8 +64,9 @@ class CounterActor(var count: Int, var time:Int) extends Actor with ActorLogging
     case _ =>
   }
 
-
-  def receive = stopped
+  def receive = {
+    case "1" =>
+  }
 
   private def sayCount(count:Int) = { count ->
     println (s"count = $count")
