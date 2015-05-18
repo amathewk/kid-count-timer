@@ -14,6 +14,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class HelloScaloid extends SActivity {
 
   var tts : TextToSpeech = null
+//  val startButton, stopButton
 
   import scaloid.example.CountingState._
   @volatile var countState : CountingState = Initializing

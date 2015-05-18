@@ -16,7 +16,10 @@ proguardOptions in Android ++= Seq("-dontobfuscate", "-dontoptimize", "-keepattr
   , "-dontwarn scala.collection.**" // required from Scala 2.11.4
 )
 
+resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
+
 libraryDependencies += "org.scaloid" %% "scaloid" % "3.6.1-10" withSources() withJavadoc()
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.4-SNAPSHOT" withSources() withJavadoc()
 
 scalacOptions in Compile += "-feature"
 
