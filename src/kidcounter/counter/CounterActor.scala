@@ -2,6 +2,8 @@ package kidcounter.counter
 
 import akka.actor.{Props, ActorLogging, Actor}
 import scala.concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.language.postfixOps
 //import system.dispatcher
 
 
@@ -28,7 +30,7 @@ class CounterActor(count: Int, time:Int) extends Actor with ActorLogging {
 //  import context.system.dispatcher
 
 
-  var pausedCount:Option[NextCount]
+  var pausedCount:Option[NextCount] = None
 
   def stopped : Receive = {
     case Start =>
@@ -47,10 +49,9 @@ class CounterActor(count: Int, time:Int) extends Actor with ActorLogging {
     case _ =>
   }
 
-
   def paused : Receive = {
-    case NextCount(count, maxCount) =>
-      pausedCount = Some(NextCount)
+    case nc : NextCount =>
+      pausedCount = Some(nc)
 
     case Resume =>
       sayCount(pausedCount.get.count)
